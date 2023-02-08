@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import './Component/TableComponent'
+import TableComponent from './Component/TableComponent';
+import InputComponent from './Component/InputComponent';
+import { useState } from 'react';
+import moment from 'moment/moment';
+import { useEffect } from "react";
 
 function App() {
+  let data = {
+    'interest':0,
+    'principle':0,
+    'time':0
+  };
+  const [interest, setInterest] = useState();
+  const [principle, setPrinciple] = useState();
+  const [time, setTime] = useState();
+  const [start_date, setStartDate] = useState();
+  const [payment_frequency, setPaymentFrequency] = useState();
+    
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <InputComponent setInterest={setInterest} setPrinciple={setPrinciple} setTime={setTime} setStartDate={setStartDate} setPaymentFrequency={setPaymentFrequency} />      
+    <TableComponent interest={interest} principle={principle} time={time} start_date={start_date}/>
     </div>
   );
 }
