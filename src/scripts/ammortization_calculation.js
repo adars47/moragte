@@ -30,7 +30,14 @@ function ammortization_calculate(interest, time, principle,start_date,additional
       var payment_date = start_date.format("YYYY-MM")
       var ap = additional_payment;
       var mp = monthly_payments;
-      rows.push(new createData(principle,monthly_interest,principleRepayment+ap,remaining-ap,i,payment_date,ap,mp))
+      var endingBalance = remaining-ap; 
+
+      if(endingBalance < 0 )
+      {
+        endingBalance = 0; 
+      }
+
+      rows.push(new createData(principle,monthly_interest,principleRepayment+ap,endingBalance,i,payment_date,ap,mp))
       principle = remaining - ap;
       start_date = moment(start_date).add(1, 'M');
   
