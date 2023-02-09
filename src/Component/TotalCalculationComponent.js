@@ -17,7 +17,6 @@ function TotalCalculationComponent({interest, time, principle,start_date,additio
         total_principle += row.PrinciplePayment;
         total_monthly_payment += row.Monthly_payment;
         nop++;
-        console.log(row);
     });
     return(
         <Box className="calDiv" color="text.primary">
