@@ -1,20 +1,12 @@
-import './Component/TableComponent'
-import TableComponent from './Component/TableComponent';
-import InputComponent from './Component/InputComponent';
+import '../Component/TableComponent'
+import TableComponent from '../Component/TableComponent';
+import InputComponent from '../Component/InputComponent';
 import { useState } from 'react';
-import ChartComponent from './Component/ChartComponent';
-import TotalCalculationComponent from './Component/TotalCalculationComponent';
-import styles from './App.css';
+import ChartComponent from '../Component/ChartComponent';
+import TotalCalculationComponent from '../Component/TotalCalculationComponent';
+import styles from '../App.css';
 
 function App() {
-  let data = {
-    'interest':0,
-    'principle':0,
-    'time':0,
-    'downpayment':0,
-    'additional_payment':0
-  };
-
   const [interest, setInterest] = useState();
   const [principle, setPrinciple] = useState();
   const [time, setTime] = useState();

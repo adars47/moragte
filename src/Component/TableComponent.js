@@ -12,7 +12,7 @@ function TableComponent({interest, time, principle,start_date,additional_payment
 
   return (
     <TableContainer className='tableDiv'>
-    <Table sx={{ minWidth: 650 }} aria-label="simple table">
+    <Table sx={{ minWidth: 650, border: 1 ,borderColor: 'grey.500'  }} aria-label="simple table">
       <TableHead>
         <TableRow>
           <TableCell align="center">Payment Date</TableCell>
