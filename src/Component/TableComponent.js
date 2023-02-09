@@ -35,7 +35,7 @@ function TableComponent({interest, time, principle,start_date,additional_payment
               {Math.round(row.BeginningBalance * 100) / 100}
             </TableCell>
             <TableCell align="center">{Math.round(row.InterestPayment * 100) / 100}</TableCell>
-            <TableCell align="center">{Math.round(row.PrinciplePayment * 100) / 100}</TableCell>
+            <TableCell align="center">{Math.round((row.PrinciplePayment +row.additional_payment ) * 100) / 100}</TableCell>
             <TableCell align="center">{parseFloat(row.Monthly_payment+row.additional_payment).toFixed(2)} </TableCell>
             <TableCell align="center">{Math.round(row.EndingBalance * 100) / 100}</TableCell>
             <TableCell align="center">{row.additional_payment}</TableCell>
