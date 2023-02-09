@@ -7,7 +7,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
 
-function InputComponent({setInterest,setPrinciple,setTime,setStartDate,setDownPayment}) {
+function InputComponent({setInterest,setPrinciple,setTime,setStartDate,setDownPayment,setAdditionalPayment}) {
 
   const validationSchema = yup.object({
     loan_amt: yup
@@ -44,6 +44,13 @@ function InputComponent({setInterest,setPrinciple,setTime,setStartDate,setDownPa
         'ERROR: Enter a valid downpayment', 
         (value) => value > 0
         ),
+        additionalPayment: yup
+        .number('Enter a valid additional payment')
+        .test(
+          'Is positive?',
+          'ERROR: Enter a valid additional payment', 
+          (value) => value >= 0
+          ),
   });
 
   const formik = useFormik({
@@ -52,6 +59,7 @@ function InputComponent({setInterest,setPrinciple,setTime,setStartDate,setDownPa
       loan_term: 15,
       interest_rate: 6,
       downpayment: 4000,
+      additionalPayment: 50,
     },
     validationSchema:validationSchema,
     onSubmit: (values) => {
@@ -59,6 +67,7 @@ function InputComponent({setInterest,setPrinciple,setTime,setStartDate,setDownPa
       setPrinciple(values.loan_amt-values.downpayment)
       setTime(values.loan_term)
       setDownPayment(values.downpayment)
+      setAdditionalPayment(values.additionalPayment)
     }});
 
     let date = moment().format("yyyy-MM")
@@ -105,13 +114,24 @@ function InputComponent({setInterest,setPrinciple,setTime,setStartDate,setDownPa
             />
             <TextField
               fullWidth
-              id="donpayment"
+              id="downpayment"
               name="downpayment"
               label="Down Payment"
               value={formik.values.downpayment}
               onChange={formik.handleChange}
               error={formik.touched.downpayment && Boolean(formik.errors.downpayment)}
               helperText={formik.touched.downpayment && formik.errors.downpayment}
+            />
+
+            <TextField
+              fullWidth
+              id="additionalPayment"
+              name="additionalPayment"
+              label="Additional Payment"
+              value={formik.values.additionalPayment}
+              onChange={formik.handleChange}
+              error={formik.touched.additionalPayment && Boolean(formik.errors.additionalPayment)}
+              helperText={formik.touched.additionalPayment && formik.errors.additionalPayment}
             />
           <LocalizationProvider dateAdapter={AdapterDateFns}>
             <DatePicker
