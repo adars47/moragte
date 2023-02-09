@@ -7,7 +7,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
 
-function InputComponent({setInterest,setPrinciple,setTime,setStartDate}) {
+function InputComponent({setInterest,setPrinciple,setTime,setStartDate,setDownPayment}) {
 
   const validationSchema = yup.object({
     loan_amt: yup
@@ -37,6 +37,13 @@ function InputComponent({setInterest,setPrinciple,setTime,setStartDate}) {
         (value) => value > 0
         )
       .required('Interest rate is required'),
+      downpayment: yup
+      .number('Enter a valid downpayment')
+      .test(
+        'Is positive?', 
+        'ERROR: Enter a valid downpayment', 
+        (value) => value > 0
+        ),
   });
 
   const formik = useFormik({
@@ -44,12 +51,14 @@ function InputComponent({setInterest,setPrinciple,setTime,setStartDate}) {
       loan_amt: 20000,
       loan_term: 15,
       interest_rate: 6,
+      downpayment: 4000,
     },
     validationSchema:validationSchema,
     onSubmit: (values) => {
       setInterest(values.interest_rate)
-      setPrinciple(values.loan_amt)
+      setPrinciple(values.loan_amt-values.downpayment)
       setTime(values.loan_term)
+      setDownPayment(values.downpayment)
     }});
 
     let date = moment().format("yyyy-MM")
@@ -94,7 +103,16 @@ function InputComponent({setInterest,setPrinciple,setTime,setStartDate}) {
               error={formik.touched.interest_rate && Boolean(formik.errors.interest_rate)}
               helperText={formik.touched.interest_rate && formik.errors.interest_rate}
             />
-
+            <TextField
+              fullWidth
+              id="donpayment"
+              name="downpayment"
+              label="Down Payment"
+              value={formik.values.downpayment}
+              onChange={formik.handleChange}
+              error={formik.touched.downpayment && Boolean(formik.errors.downpayment)}
+              helperText={formik.touched.downpayment && formik.errors.downpayment}
+            />
           <LocalizationProvider dateAdapter={AdapterDateFns}>
             <DatePicker
               inputFormat="yyyy-MM"
@@ -107,15 +125,14 @@ function InputComponent({setInterest,setPrinciple,setTime,setStartDate}) {
               rifmFormatter = {dateFormatter}
               renderInput={(params) => <TextField {...params} helperText={null}/>}
             />
-        </LocalizationProvider>
-
-
+          </LocalizationProvider>
 
             <Button color="primary" variant="contained" fullWidth type="submit">
             Calculate
             </Button>
           </form>
     </div>
+    
     );
   }
   

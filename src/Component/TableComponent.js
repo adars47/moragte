@@ -44,10 +44,10 @@ function TableComponent({interest, time, principle,start_date}) {
         <TableRow>
           <TableCell align="center">Payment Date</TableCell>
           <TableCell align="center">Beginning Balance</TableCell>
-          <TableCell align="center"> InterestPayment</TableCell>
-          <TableCell align="center">PrinciplePayment</TableCell>
+          <TableCell align="center">Interest Payment</TableCell>
+          <TableCell align="center">Principle Payment</TableCell>
           <TableCell align="center">Payment</TableCell>
-          <TableCell align="center">EndingBalance</TableCell>
+          <TableCell align="center">Ending Balance</TableCell>
           <TableCell align="center">Extra Payment</TableCell>
         </TableRow>
       </TableHead>
