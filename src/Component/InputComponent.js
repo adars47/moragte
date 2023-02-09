@@ -42,7 +42,7 @@ function InputComponent({setInterest,setPrinciple,setTime,setStartDate,setDownPa
       .test(
         'Is positive?', 
         'ERROR: Enter a valid downpayment', 
-        (value) => value > 0
+        (value) => value >= 0
         ),
         additionalPayment: yup
         .number('Enter a valid additional payment')
@@ -137,7 +137,7 @@ function InputComponent({setInterest,setPrinciple,setTime,setStartDate,setDownPa
             <DatePicker
               inputFormat="yyyy-MM"
               views={['year', 'month']}
-              label="Year and Month"
+              label="Start Date"
               onChange={(newValue)=>{
                 setStartDate(newValue);
                 date = newValue
@@ -145,7 +145,7 @@ function InputComponent({setInterest,setPrinciple,setTime,setStartDate,setDownPa
               rifmFormatter = {dateFormatter}
               renderInput={(params) => <TextField {...params} helperText={null}/>}
             />
-          </LocalizationProvider>
+        </LocalizationProvider>
 
             <Button color="primary" variant="contained" fullWidth type="submit">
             Calculate
