@@ -1,9 +1,13 @@
 .rowC{display:flex; flex-direction:row;}
 
 .InputDiv{
-  width:10%;
+  width:20%;
 }
 
+.calDiv
+{
+  width: 10%;
+}
 .chartDiv{
-  width:80%;
+  width:50%;
 }

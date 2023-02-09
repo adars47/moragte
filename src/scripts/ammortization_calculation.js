@@ -8,7 +8,7 @@ function createData(
     key,
     start_date,
     additional_payment,
-    Monthly_payment
+    Monthly_payment,
   ) {
     return { BeginningBalance, InterestPayment, PrinciplePayment, EndingBalance ,key,start_date,additional_payment,Monthly_payment};
   }
@@ -37,7 +37,7 @@ function ammortization_calculate(interest, time, principle,start_date,additional
         endingBalance = 0; 
       }
 
-      rows.push(new createData(principle,monthly_interest,principleRepayment+ap,endingBalance,i,payment_date,ap,mp))
+      rows.push(new createData(principle,monthly_interest,principleRepayment,endingBalance,i,payment_date,ap,mp))
       principle = remaining - ap;
       start_date = moment(start_date).add(1, 'M');
   

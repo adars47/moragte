@@ -3,6 +3,7 @@ import TableComponent from './Component/TableComponent';
 import InputComponent from './Component/InputComponent';
 import { useState } from 'react';
 import ChartComponent from './Component/ChartComponent';
+import TotalCalculationComponent from './Component/TotalCalculationComponent';
 import styles from './App.css';
 
 function App() {
@@ -25,9 +26,15 @@ function App() {
     <div className="App">
        <div className='rowC'>
           <InputComponent setInterest={setInterest} setPrinciple={setPrinciple} setTime={setTime} setStartDate={setStartDate} setPaymentFrequency={setPaymentFrequency} setDownPayment={setDownPayment} setAdditionalPayment={setAdditionalPayment} />      
-          <ChartComponent interest={interest} principle={principle} time={time} start_date={start_date} additional_payment={additional_payment} down_payment={down_payment} />
+          <TotalCalculationComponent interest={interest} principle={principle} time={time} start_date={start_date} additional_payment={additional_payment} down_payment={down_payment} />       
         </div>
-    <TableComponent interest={interest} principle={principle} time={time} start_date={start_date} additional_payment={additional_payment} down_payment={down_payment} />
+ <br></br>
+        <TableComponent interest={interest} principle={principle} time={time} start_date={start_date} additional_payment={additional_payment} down_payment={down_payment} />
+<br></br>
+<div className='rowC'>
+
+        <ChartComponent interest={interest} principle={principle} time={time} start_date={start_date} additional_payment={additional_payment} down_payment={down_payment} />
+</div>
     </div>
   );
 }

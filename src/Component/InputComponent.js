@@ -64,7 +64,7 @@ function InputComponent({setInterest,setPrinciple,setTime,setStartDate,setDownPa
     validationSchema:validationSchema,
     onSubmit: (values) => {
       setInterest(values.interest_rate)
-      setPrinciple(values.loan_amt-values.downpayment)
+      setPrinciple(values.loan_amt)
       setTime(values.loan_term)
       setDownPayment(values.downpayment)
       setAdditionalPayment(values.additionalPayment)
