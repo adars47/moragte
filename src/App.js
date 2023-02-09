@@ -16,11 +16,11 @@ function App() {
   const [time, setTime] = useState();
   const [start_date, setStartDate] = useState();
   const [payment_frequency, setPaymentFrequency] = useState();
-    
+  const [additional_payments,setAdditionalPayments] = useState(50);    
   return (
     <div className="App">
     <InputComponent setInterest={setInterest} setPrinciple={setPrinciple} setTime={setTime} setStartDate={setStartDate} setPaymentFrequency={setPaymentFrequency} />      
-    <TableComponent interest={interest} principle={principle} time={time} start_date={start_date}/>
+    <TableComponent interest={interest} principle={principle} time={time} start_date={start_date} additional_payments={additional_payments}/>
     </div>
   );
 }
