@@ -27,14 +27,9 @@ function App() {
        <div className='rowC'>
           <InputComponent setInterest={setInterest} setPrinciple={setPrinciple} setTime={setTime} setStartDate={setStartDate} setPaymentFrequency={setPaymentFrequency} setDownPayment={setDownPayment} setAdditionalPayment={setAdditionalPayment} />      
           <TotalCalculationComponent interest={interest} principle={principle} time={time} start_date={start_date} additional_payment={additional_payment} down_payment={down_payment} />       
+          <ChartComponent interest={interest} principle={principle} time={time} start_date={start_date} additional_payment={additional_payment} down_payment={down_payment} />
         </div>
- <br></br>
         <TableComponent interest={interest} principle={principle} time={time} start_date={start_date} additional_payment={additional_payment} down_payment={down_payment} />
-<br></br>
-<div className='rowC'>
-
-        <ChartComponent interest={interest} principle={principle} time={time} start_date={start_date} additional_payment={additional_payment} down_payment={down_payment} />
-</div>
     </div>
   );
 }

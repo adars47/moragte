@@ -77,7 +77,7 @@ function InputComponent({setInterest,setPrinciple,setTime,setStartDate,setDownPa
     };
   
     return (
-      <div className="App">
+      <div className="inputDiv">
         <h1>Input the details</h1>
           <form onSubmit={formik.handleSubmit}>
             <TextField

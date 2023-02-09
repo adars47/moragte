@@ -11,7 +11,7 @@ function TableComponent({interest, time, principle,start_date,additional_payment
   let rows = ammortization_calculate(interest,time,principle,start_date,additional_payment,down_payment);
 
   return (
-    <TableContainer className='InputDiv'>
+    <TableContainer className='tableDiv'>
     <Table sx={{ minWidth: 650 }} aria-label="simple table">
       <TableHead>
         <TableRow>

@@ -15,6 +15,7 @@ function ChartComponent({interest, time, principle,start_date,additional_payment
     console.log(interests,principles);
     return (
         <div className="chartDiv">
+            <h1> Chart</h1>
             <FlexibleXYPlot>
                 <VerticalGridLines />
                 <HorizontalGridLines />
@@ -22,14 +23,15 @@ function ChartComponent({interest, time, principle,start_date,additional_payment
                 <YAxis />
                 <LineSeries
                     style={{
-                    strokeWidth: '3px'
+                    strokeWidth: '1px'
                     }}
-                    lineStyle={{stroke: 'red'}}
-                    markStyle={{stroke: 'blue'}}
                     data={interests}
                 />
+                
                 <LineSeries
-                    curve={'curveMonotoneX'}
+                    style={{
+                    strokeWidth: '1px'
+                    }}
                     data={principles}
                 />
             </FlexibleXYPlot>
