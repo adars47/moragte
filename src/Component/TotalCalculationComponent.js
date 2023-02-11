@@ -25,22 +25,22 @@ function TotalCalculationComponent({interest, time, principle,start_date,additio
                     <List component="nav" aria-label="secondary mailbox folders">
                         <ListItem>
                             <ListItemText
-                                primary=" Total Interest"
+                                primary=" Total Interest :"
                                 secondary={ parseFloat(total_interest).toFixed(2)}/>
                         </ListItem>
                         <ListItem>
                             <ListItemText
-                                primary=" Total Principle"
+                                primary=" Total Principle : "
                                 secondary={ parseFloat(total_principle).toFixed(2)}/>
                         </ListItem>
                         <ListItem>
                             <ListItemText
-                                primary=" Total Monthly Payment"
+                                primary=" Total Monthly Payment : "
                                 secondary={ parseFloat(total_monthly_payment).toFixed(2)}/>
                         </ListItem>
                         <ListItem>
                             <ListItemText
-                                primary=" Total Months"
+                                primary=" Total Months : "
                                 secondary={ nop}/>
                         </ListItem>
                     </List>

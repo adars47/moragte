@@ -79,7 +79,8 @@ function ChartComponent({interest, time, principle,start_date,additional_payment
     }, [sum_interest,sum_principle]);
 
   return (
-    <div id="chartdiv" style={{ width: "100%", height: "400px" }}></div>
+    <div id="chartdiv" style={{ width: "100%", height: "400px" }}><h1>PieChart</h1></div>
+ 
   );
 }
 export default ChartComponent;

@@ -13,15 +13,15 @@ function TableComponent({interest, time, principle,start_date,additional_payment
   return (
     <TableContainer className='tableDiv'>
     <Table sx={{ minWidth: 650, border: 1 ,borderColor: 'grey.500'  }} aria-label="simple table">
-      <TableHead>
+      <TableHead >
         <TableRow>
-          <TableCell align="center">Payment Date</TableCell>
-          <TableCell align="center">Beginning Balance</TableCell>
-          <TableCell align="center">Interest Payment</TableCell>
-          <TableCell align="center">Principle Payment</TableCell>
-          <TableCell align="center">Payment</TableCell>
-          <TableCell align="center">Ending Balance</TableCell>
-          <TableCell align="center">Extra Payment</TableCell>
+          <TableCell align="center" style={{ fontWeight: 'bold' }}>Payment Date</TableCell>
+          <TableCell align="center" style={{ fontWeight: 'bold' }}>Beginning Balance</TableCell>
+          <TableCell align="center" style={{ fontWeight: 'bold' }}>Interest Payment</TableCell>
+          <TableCell align="center" style={{ fontWeight: 'bold' }}>Principle Payment</TableCell>
+          <TableCell align="center" style={{ fontWeight: 'bold' }}>Payment</TableCell>
+          <TableCell align="center" style={{ fontWeight: 'bold' }}>Ending Balance</TableCell>
+          <TableCell align="center" style={{ fontWeight: 'bold' }}>Extra Payment</TableCell>
         </TableRow>
       </TableHead>
       <TableBody>

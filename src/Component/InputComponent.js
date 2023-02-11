@@ -7,7 +7,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
 
-function InputComponent({setInterest,setPrinciple,setTime,setStartDate,setDownPayment,setAdditionalPayment}) {
+function InputComponent({setInterest,setPrinciple,setTime,setStartDate,setDownPayment,setAdditionalPayment,setClientName}) {
 
   const validationSchema = yup.object({
     loan_amt: yup
@@ -60,6 +60,7 @@ function InputComponent({setInterest,setPrinciple,setTime,setStartDate,setDownPa
       interest_rate: 6,
       downpayment: 4000,
       additionalPayment: 50,
+      client_name:'',
     },
     validationSchema:validationSchema,
     onSubmit: (values) => {
@@ -68,6 +69,7 @@ function InputComponent({setInterest,setPrinciple,setTime,setStartDate,setDownPa
       setTime(values.loan_term)
       setDownPayment(values.downpayment)
       setAdditionalPayment(values.additionalPayment)
+      setClientName(values.client_name)
     }});
 
     let date = moment().format("yyyy-MM")
@@ -78,8 +80,17 @@ function InputComponent({setInterest,setPrinciple,setTime,setStartDate,setDownPa
   
     return (
       <div className="inputDiv">
-        <h1>Input the details</h1>
+        <h1>Input The Details</h1>
           <form onSubmit={formik.handleSubmit}>
+          <TextField
+              fullWidth
+              id="client_name"
+              name="client_name"
+              label="Enter Your Name"
+              value={formik.values.client_name}
+              onChange={formik.handleChange}
+              helperText={formik.touched.client_name && formik.errors.client_name}
+            />
             <TextField
               fullWidth
               id="loan_amt"
