@@ -1,38 +1,74 @@
-.App {
-  text-align: center;
-}
+.rowC{display:flex; flex-direction:row;}
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App{
+  background-color:rgb(249, 234, 250);
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: rgb(191, 232, 235);
+  min-height: 5vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-size: calc(7px + 1vmin);
+  color: rgb(49, 48, 48);
+  margin-bottom: 0%;
+}
+ .topdiv{
+  background-color:rgb(208, 248, 248);}
+ 
+
+.inputDiv{
+  width:40%;
+  height:"500px";
+  margin: 0 2% 2% 2%
 }
 
-.App-link {
-  color: #61dafb;
+.tableDiv{
+  min-width: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  border: 1cap;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.calDiv
+{
+  width: 25%;
+  height : "500px";
+  margin: 0 3% 0 2%;
+  justify-content: center;
+  align-items: center;
+}
+.chartDiv{
+  width:40%;
+  height : "500px"
+}
+
+.centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.navHeader{
+  min-height: 4vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(4px + 1vmin);
+  color: rgb(54, 53, 53);
+  margin-bottom: 0%;
+  background-color: rgb(212, 188, 212);
+}
+
+.userName{
+  text-transform: capitalize;
+  text-align: start;
+  text-decoration: solid;
+  font-size: large;
+  align-items: flex-start;
+  margin-left: 2%;
+
 }

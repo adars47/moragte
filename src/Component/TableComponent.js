@@ -4,51 +4,24 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import moment from 'moment/moment';
+import ammortization_calculate from '../scripts/ammortization_calculation';
 
-
-function createData(
-  BeginningBalance,
-  InterestPayment,
-  PrinciplePayment,
-  EndingBalance,
-  key,
-  start_date
-) {
-  return { BeginningBalance, InterestPayment, PrinciplePayment, EndingBalance ,key,start_date};
-}
-
-
-function TableComponent({interest, time, principle,start_date}) {
-  interest = interest/100;
-  let  nop = time*12;
-  let monthly_payments = principle*(interest/12)*(Math.pow((1+(interest/12)),nop)/(Math.pow((interest/12)+1,nop)-1));
-  start_date = moment(start_date)
-  let rows = [];
-  for(var i=0;i<nop;i++)
-  {
-    var monthly_interest = principle*(interest/12);
-    var principleRepayment = monthly_payments-monthly_interest;
-    var remaining = principle - principleRepayment;
-    var payment_date = start_date.format("YYYY-MM")
-    rows.push(new createData(principle,monthly_interest,principleRepayment,remaining,i,payment_date))
-    principle = remaining
-    start_date = moment(start_date).add(1, 'M');
-  }
-
+function TableComponent({interest, time, principle,start_date,additional_payment,down_payment}) {
+  
+  let rows = ammortization_calculate(interest,time,principle,start_date,additional_payment,down_payment);
 
   return (
-    <TableContainer>
-    <Table sx={{ minWidth: 650 }} aria-label="simple table">
-      <TableHead>
+    <TableContainer className='tableDiv'>
+    <Table sx={{ minWidth: 650, border: 1 ,borderColor: 'grey.500'  }} aria-label="simple table">
+      <TableHead >
         <TableRow>
-          <TableCell align="center">Payment Date</TableCell>
-          <TableCell align="center">Beginning Balance</TableCell>
-          <TableCell align="center"> InterestPayment</TableCell>
-          <TableCell align="center">PrinciplePayment</TableCell>
-          <TableCell align="center">Payment</TableCell>
-          <TableCell align="center">EndingBalance</TableCell>
-          <TableCell align="center">Extra Payment</TableCell>
+          <TableCell align="center" style={{ fontWeight: 'bold' }}>Payment Date</TableCell>
+          <TableCell align="center" style={{ fontWeight: 'bold' }}>Beginning Balance</TableCell>
+          <TableCell align="center" style={{ fontWeight: 'bold' }}>Interest Payment</TableCell>
+          <TableCell align="center" style={{ fontWeight: 'bold' }}>Principle Payment</TableCell>
+          <TableCell align="center" style={{ fontWeight: 'bold' }}>Payment</TableCell>
+          <TableCell align="center" style={{ fontWeight: 'bold' }}>Ending Balance</TableCell>
+          <TableCell align="center" style={{ fontWeight: 'bold' }}>Extra Payment</TableCell>
         </TableRow>
       </TableHead>
       <TableBody>
@@ -62,10 +35,10 @@ function TableComponent({interest, time, principle,start_date}) {
               {Math.round(row.BeginningBalance * 100) / 100}
             </TableCell>
             <TableCell align="center">{Math.round(row.InterestPayment * 100) / 100}</TableCell>
-            <TableCell align="center">{Math.round(row.PrinciplePayment * 100) / 100}</TableCell>
-            <TableCell align="center">{parseFloat(monthly_payments).toFixed(2)} </TableCell>
+            <TableCell align="center">{Math.round((row.PrinciplePayment ) * 100) / 100}</TableCell>
+            <TableCell align="center">{parseFloat(row.Monthly_payment+row.additional_payment).toFixed(2)} </TableCell>
             <TableCell align="center">{Math.round(row.EndingBalance * 100) / 100}</TableCell>
-            <TableCell align="center"></TableCell>
+            <TableCell align="center">{row.additional_payment}</TableCell>
           </TableRow>
         ))}
       </TableBody>
